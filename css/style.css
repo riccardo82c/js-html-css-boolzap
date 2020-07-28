@@ -20,14 +20,28 @@
 
 /* typo */
 
+i {
+	font-size: 24px;
+	color: #6d8692;
+}
+
+input {
+	font-size: 18px;
+}
+
+.active {
+	background-color: #6d869283
+}
+
 
 /* end-typo */
 
 /* section GENERALE */
 body {
-	background-color: tan;
-	background: rgb(145, 203, 230);
-	background: linear-gradient(0deg, rgba(145, 203, 230, 1) 75%, rgba(96, 127, 227, 1) 75%);
+	font-size: 14px;
+	font-family: 'Poppins',
+		sans-serif;
+	background: linear-gradient(180deg, #6d8692 10%, rgba(186, 208, 219, 1) 72%);
 }
 
 .container {
@@ -35,25 +49,30 @@ body {
 	width: 1200px;
 	margin: 5vh auto;
 	background-color: white;
-	border: 1px solid black;
+	box-shadow: 10px 10px 5px -3px rgb(113, 118, 132);
+	border: 1px solid #6d8692;
+
+
+
 }
 
 /* HEADER */
 
 header {
 	height: 75px;
-	background-color: red;
+
 }
 
 /* header-left */
 
 .header-left {
-	width: 30%;
+	width: 40%;
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid black;
+	border-right: 1px solid lightgrey;
+
 }
 
 .header-left {
@@ -73,12 +92,12 @@ header {
 /* header-right */
 
 .header-right {
-	width: 70%;
+	width: 60%;
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid black;
+
 }
 
 .header-right {
@@ -103,7 +122,7 @@ header {
 
 .header-right-login .ultimo-accesso {
 	height: 75px;
-	width: 200px;
+
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
@@ -120,7 +139,7 @@ header {
 
 section.column-left {
 	height: calc(100% - 75px);
-	width: 30%;
+	width: 40%;
 
 }
 
@@ -130,7 +149,7 @@ section.column-left {
 	padding: 10px;
 	display: flex;
 	align-items: center;
-	background-color: #8edafc;
+	background-color: #6d8692;
 }
 
 .aside-top .bell {
@@ -146,7 +165,7 @@ section.column-left {
 
 .aside-top i {
 	font-size: 24px;
-	color: #8edafc;
+	color: #6d8692;
 }
 
 .aside-top .notifiche {
@@ -189,16 +208,25 @@ section.column-left {
 
 .contatti {
 	height: 100px;
-	padding: 10px;
+	padding: 10px 20px;
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
-	justify-content: space-evenly;
 	border-bottom: 1px solid rgb(231, 229, 229);
 
 }
 
 .contatti img {
 	height: 60px;
+}
+
+.contatto {
+	flex: 1;
+	padding: 10px;
+}
+
+.contatto-time {
+	align-self: flex-start
 }
 
 /* fine colonna-sx bottom */
@@ -209,8 +237,8 @@ section.column-left {
 
 section.column-right {
 	height: calc(100% - 75px);
-	width: 70%;
-	background-color: lightsteelblue;
+	width: 60%;
+	background-color: #8ed9fc96;
 }
 
 /* colonna-dx chat */
@@ -219,10 +247,8 @@ section.column-right {
 .chat {
 	overflow-y: scroll;
 	height: calc(100% - 50px);
-
 	display: flex;
 	flex-direction: column;
-
 
 	background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_9e8a2898faedb7db9bf5638405cf81ae.png');
 	background-color: rgba(0, 0, 0, 0.425);
@@ -244,18 +270,22 @@ section.column-right {
 }
 
 .bubble.received {
-	background-color: lightgreen;
+	background-color: rgb(193, 247, 193);
 }
 
 .bubble.send {
-	background-color: white;
+	background-color: rgb(216, 216, 216);
 }
 
 .bubble {
 	width: 300px;
-	padding: 15px;
+	padding: 10px;
+
+	border: 1px solid black;
+
 	border-radius: 10px;
-	box-shadow: 2px 2px 3px grey;
+
+	box-shadow: 0px 9px 5px -3px rgba(0, 0, 0, 0.527);
 }
 
 
@@ -271,9 +301,10 @@ section.column-right {
 
 .write-input {
 	height: 50px;
-	background-color: white;
+	font-size: 24px;
 	display: flex;
 	justify-content: space-around;
+	background-color: white;
 }
 
 .write-input .emoticon {
@@ -292,6 +323,9 @@ section.column-right {
 .write-input .write input {
 	width: 100%;
 	height: 100%;
+	padding: 0 5px;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
 }
 
 .write-input .mic {
