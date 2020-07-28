@@ -230,6 +230,7 @@ section.column-right {
 
 .message {
 	display: flex;
+	padding: 10px;
 
 }
 
@@ -239,21 +240,22 @@ section.column-right {
 
 .message:nth-child(even) .bubble {
 	justify-content: flex-end;
+
+}
+
+.bubble.received {
 	background-color: lightgreen;
 }
 
-.message:nth-child(odd) {
-	justify-content: flex-start;
-}
-
-.message:nth-child(odd) .bubble {
-	justify-content: flex-end;
+.bubble.send {
 	background-color: white;
 }
 
 .bubble {
 	width: 300px;
-	padding: 10px;
+	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 3px grey;
 }
 
 
