@@ -43,9 +43,16 @@ input {
 	text-decoration: underline;
 }
 
+.ultimo-accesso p:last-child,
 .notifiche p:last-child,
 .contatto p:last-child {
 	color: grey;
+}
+
+.ultimo-accesso p:first-child,
+.notifiche p:first-child,
+.contatto p:first-child {
+	font-weight: 600;
 }
 
 /* end-typo */
@@ -80,7 +87,7 @@ header {
 /* header-left */
 
 .header-left {
-	width: 40%;
+	width: 30%;
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -106,7 +113,7 @@ header {
 /* header-right */
 
 .header-right {
-	width: 60%;
+	width: 70%;
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -153,7 +160,7 @@ header {
 
 section.column-left {
 	height: calc(100% - 75px);
-	width: 40%;
+	width: 30%;
 
 }
 
@@ -251,7 +258,7 @@ section.column-left {
 
 section.column-right {
 	height: calc(100% - 75px);
-	width: 60%;
+	width: 70%;
 	background-color: #8ed9fc96;
 }
 
@@ -339,7 +346,7 @@ section.column-right {
 .write-input .write input {
 	width: 100%;
 	height: 100%;
-	padding: 0 5px;
+	padding: 5px 5px;
 	border: 1px solid lightgrey;
 	border-radius: 10px;
 }
