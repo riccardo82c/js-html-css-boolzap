@@ -20,8 +20,6 @@
 
 /* typo */
 
-
-
 i {
 	font-size: 24px;
 
@@ -46,9 +44,6 @@ img {
 	box-shadow: 10px 9px 8px -10px rgb(113, 118, 132);
 }
 
-
-
-
 input {
 	border: 1px solid #6d8692;
 	box-shadow: inset 1px 1px 2px #6d8692;
@@ -61,6 +56,10 @@ input:focus {
 		inset 0px 2px 3px rgba(0, 0, 0, 0.2),
 		0px 5px 5px rgba(0, 0, 0, 0.15);
 	outline: none;
+}
+
+.aside-center input:focus~i {
+	color: #c1f7c1;
 }
 
 .active {
@@ -81,6 +80,7 @@ input:focus {
 .notifiche p:last-child,
 .contatto p:last-child {
 	color: #6d8692;
+	font-weight: 200;
 }
 
 .ultimo-accesso p:first-child,
@@ -94,8 +94,7 @@ input:focus {
 /* section GENERALE */
 body {
 	font-size: 14px;
-	font-family: 'Poppins',
-		sans-serif;
+	font-family: 'Poppins', sans-serif;
 	background: linear-gradient(180deg, #6d8692 10%, rgba(186, 208, 219, 1) 72%);
 }
 
@@ -106,16 +105,12 @@ body {
 	background-color: white;
 	box-shadow: 1px 9px 5px -3px rgb(113, 118, 132);
 	border: 1px solid #6d8692;
-
-
-
 }
 
 /* HEADER */
 
 header {
 	height: 75px;
-
 }
 
 /* header-left */
@@ -128,6 +123,11 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	border-right: 1px solid rgb(231, 229, 229);
+
+
+	/* shadow effect */
+	position: relative;
+	z-index: 2000;
 
 }
 
@@ -146,13 +146,13 @@ header {
 
 .header-right {
 	width: 70%;
-	height: 100%;
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
-	/* shadow */
-	box-shadow: 0px 7px 6px -2px rgba(0, 0, 0, 0.53);
+	/* shadow effect*/
+	box-shadow: -5px 17px 5px -10px rgba(0, 0, 0, 0.62);
 	position: relative;
 	z-index: 1000;
 }
@@ -167,8 +167,6 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-
-
 }
 
 
@@ -223,8 +221,6 @@ section.column-left {
 	justify-content: center;
 }
 
-
-
 .aside-top .notifiche {
 	padding: 10px;
 }
@@ -241,23 +237,29 @@ section.column-left {
 	background-color: white;
 
 
-
 	/* shadow effect */
-
+	position: relative;
 	box-shadow: 4px 8px 6px -4px rgba(143, 143, 143, 0.53),
 		7px -1px 2px -2px rgba(0, 0, 0, 0.53);
 }
 
 .aside-center i {
+	position: absolute;
+	bottom: 10px;
+	font-size: 20px;
+	left: 8px;
 	padding: 5px;
+	color: #6d8692;
 }
 
 .aside-center input {
 	flex: 1 0 auto;
 	height: 30px;
-	padding: 0 5px;
+	padding: 0 5px 0 34px;
 	border-radius: 10px;
 }
+
+
 
 /* end colonna-sx center search */
 
@@ -325,21 +327,18 @@ section.column-right {
 
 }
 
-.message:nth-child(even) {
+.message.received {
 	justify-content: flex-end;
 }
 
-.message:nth-child(even) .bubble {
-	justify-content: flex-end;
 
-}
 
-.bubble.received {
+.message.received .bubble {
 	background-color: rgb(193, 247, 193);
 }
 
-.bubble.send {
-	background-color: rgb(216, 216, 216);
+.message.send .bubble {
+	background-color: white;
 }
 
 .bubble {
@@ -366,7 +365,7 @@ section.column-right {
 
 
 	/* shadow effect */
-	box-shadow: 0px -8px 6px -5px rgba(0, 0, 0, 0.53);
+	box-shadow: -6px -14px 5px -10px rgba(0, 0, 0, 0.62);
 	position: relative;
 	z-index: 1000;
 }
@@ -400,3 +399,16 @@ section.column-right {
 }
 
 /* end colonna-dx scrivi messaggio */
+
+
+
+
+
+/* try insert f a icon with : before...
+in input don't work*/
+/* input:before {
+	font-family: 'Font Awesome 5 Free';
+	content: "\f002";
+	font-weight: 900;
+
+} */
