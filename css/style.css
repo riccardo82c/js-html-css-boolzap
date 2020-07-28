@@ -162,6 +162,10 @@ section.column-left {
 	align-items: center;
 	font-size: 24px;
 	background-color: white;
+}
+
+.aside-center i {
+	padding: 5px;
 
 }
 
@@ -169,6 +173,7 @@ section.column-left {
 	flex: 1 0 auto;
 	height: 30px;
 	padding: 0 5px;
+	border: 1px solid lightgrey;
 	border-radius: 10px;
 
 
@@ -183,6 +188,22 @@ section.column-left {
 	height: calc(100% - 120px);
 	background-color: lightgreen;
 }
+
+.aside-bottom .contatti {
+	height: 100px;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	border: 1px solid lightgray;
+	background-color: lightyellow;
+}
+
+.aside-bottom .contatti img {
+	height: 60px;
+}
+
+/* fine aside bottom */
 
 section.column-right {
 	height: calc(100% - 75px);
