@@ -20,13 +20,44 @@
 
 /* typo */
 
+
+
 i {
 	font-size: 24px;
+
+}
+
+a {
 	color: #6d8692;
 }
 
+a:hover {
+	color: #2b4450;
+}
+
+p {
+	color: rgb(43, 43, 43);
+}
+
+img {
+	border-radius: 50%;
+	border: 1px solid #c1f7c1;
+}
+
+
+
+
 input {
 	border: 1px solid #6d8692;
+	box-shadow: inset 1px 1px 2px #6d8692;
+}
+
+input:focus {
+	background-color: #b5cfdc;
+	box-shadow: 0px 0px 0px 3px #c1f7c1,
+		inset 0px 2px 3px rgba(0, 0, 0, 0.2),
+		0px 5px 5px rgba(0, 0, 0, 0.15);
+	outline: none;
 }
 
 .active {
@@ -90,22 +121,20 @@ header {
 	width: 30%;
 	height: 100%;
 	display: flex;
+	padding: 10px;
 	justify-content: space-between;
 	align-items: center;
 	border-right: 1px solid #6d8692;
 
 }
 
-.header-left {
-	padding: 0 5px 0 0;
-}
 
-.header-left-login img {
+
+.header-left img {
 	height: 60px;
 }
 
 .header-left-icon i {
-	font-size: 24px;
 	padding: 0 5px;
 }
 
@@ -152,7 +181,7 @@ header {
 }
 
 .header-right-icon i {
-	font-size: 24px;
+
 	padding: 0 5px;
 }
 
@@ -184,10 +213,7 @@ section.column-left {
 	justify-content: center;
 }
 
-.aside-top i {
-	font-size: 24px;
-	color: #6d8692;
-}
+
 
 .aside-top .notifiche {
 	padding: 10px;
@@ -306,14 +332,6 @@ section.column-right {
 .bubble .bubble-time {
 	text-align: right;
 }
-
-
-
-
-
-
-
-
 
 /* end colonna-dx chat */
 
