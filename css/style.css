@@ -33,6 +33,20 @@ input {
 	background-color: #6d869283
 }
 
+.contatto-time,
+.bubble-time {
+	color: grey;
+}
+
+
+.notifiche p:last-child {
+	text-decoration: underline;
+}
+
+.notifiche p:last-child,
+.contatto p:last-child {
+	color: grey;
+}
 
 /* end-typo */
 
@@ -149,7 +163,7 @@ section.column-left {
 	padding: 10px;
 	display: flex;
 	align-items: center;
-	background-color: #6d8692;
+	background-color: #b5cfdc;
 }
 
 .aside-top .bell {
@@ -280,13 +294,15 @@ section.column-right {
 .bubble {
 	width: 300px;
 	padding: 10px;
-
 	border: 1px solid black;
-
 	border-radius: 10px;
-
 	box-shadow: 0px 9px 5px -3px rgba(0, 0, 0, 0.527);
 }
+
+.bubble .bubble-time {
+	text-align: right;
+}
+
 
 
 
