@@ -1,11 +1,84 @@
+/* init */
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
+.float {
+	float: left;
+}
+
 .clearfix::after {
 	content: "";
 	clear: both;
 	display: table;
+}
+
+/* end init */
+
+/* typo */
+
+
+/* end-typo */
+
+/* section general */
+body {
+	background-color: tan;
+	background: rgb(0, 212, 255);
+	background: linear-gradient(0deg, rgba(0, 212, 255, 1) 0%, rgba(0, 212, 255, 1) 75%, rgba(9, 9, 121, 1) 75%);
+}
+
+.container {
+	height: 90vh;
+	width: 1200px;
+	margin: 5vh auto;
+	background-color: white;
+	border: 1px solid black;
+}
+
+header {
+	height: 75px;
+	background-color: red;
+}
+
+section.column-left {
+	height: calc(100% - 75px);
+	width: 30%;
+	background-color: rgb(197, 197, 197);
+}
+
+.aside-top {
+	height: 70px;
+	background-color: grey;
+}
+
+.aside-center {
+	height: 50px;
+	background-color: white;
+}
+
+.aside-bottom {
+	overflow-y: scroll;
+	height: calc(100% - 120px);
+	background-color: lightgreen;
+}
+
+section.column-right {
+	height: calc(100% - 75px);
+	width: 70%;
+	background-color: lightsteelblue;
+}
+
+
+main {
+	overflow-y: scroll;
+	height: calc(100% - 70px);
+
+}
+
+footer {
+	height: 70px;
+	background-color: white;
 }
