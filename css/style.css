@@ -95,7 +95,7 @@ input:focus {
 body {
 	font-size: 14px;
 	font-family: 'Poppins', sans-serif;
-	background: linear-gradient(180deg, #6d8692 10%, rgba(186, 208, 219, 1) 72%);
+	background: linear-gradient(180deg, #0a2836 10%, rgb(112, 135, 147) 72%);
 }
 
 .container {
@@ -314,35 +314,27 @@ section.column-right {
 .chat {
 	overflow-y: scroll;
 	height: calc(100% - 50px);
+	padding: 20px 20px 0 20px;
 	display: flex;
 	flex-direction: column;
-
 	background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_9e8a2898faedb7db9bf5638405cf81ae.png');
 	background-color: rgba(0, 0, 0, 0.425);
 }
 
-.message {
-	display: flex;
-	padding: 10px;
 
-}
-
-.message.received {
-	justify-content: flex-end;
-}
-
-
-
-.message.received .bubble {
+.send {
+	align-self: flex-end;
 	background-color: rgb(193, 247, 193);
 }
 
-.message.send .bubble {
+.received {
+	align-self: flex-start;
 	background-color: white;
 }
 
 .bubble {
-	width: 300px;
+	min-width: 20%;
+	max-width: 45%;
 	padding: 10px;
 	border-radius: 10px;
 	box-shadow: 0px 9px 5px -3px rgba(0, 0, 0, 0.527);
@@ -400,6 +392,15 @@ section.column-right {
 
 /* end colonna-dx scrivi messaggio */
 
+
+
+
+
+/* template section for JS */
+
+#template {
+	display: none;
+}
 
 
 

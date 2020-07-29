@@ -230,25 +230,37 @@
 			<!-- sezione chat -->
 			<div class="chat">
 
-				<div class="message send">
-					<div class="bubble">
-						<p> Lorem ipsum dolor sit amet.</p>
-						<div class="bubble-time">12:50</div>
-					</div>
 
+				<div class="bubble send">
+					<p> Lorem ipsum dolor sit amet.</p>
+					<div class="bubble-time">12:50</div>
 				</div>
-				<div class="message received">
+
+
+
+				<div class="bubble received">
+					<p> Lorem ipsum dolor sit amet.</p>
+					<div class="bubble-time">12:50</div>
+				</div>
+
+				<div class="bubble send">
+					<p> Lorem ipsum dolor sit amet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi iusto
+						obcaecati aut architecto corporis ipsum nam, voluptatum autem quidem fugit.</p>
+					<div class="bubble-time">12:50</div>
+				</div>
+
+
+
+
+				<!-- template bubble (messaggio) -->
+				<div id="template">
 					<div class="bubble">
-						<p> Lorem ipsum dolor sit amet.</p>
-						<div class="bubble-time">12:50</div>
+						<p class="text"> </p>
+						<div class="bubble-time"></div>
 					</div>
 				</div>
-				<div class="message received">
-					<div class="bubble">
-						<p> Lorem ipsum dolor sit amet.</p>
-						<div class="bubble-time">12:50</div>
-					</div>
-				</div>
+
+
 
 
 			</div>
@@ -259,7 +271,7 @@
 					<a href="#"><i class="far fa-smile"></i></a>
 				</div>
 				<div class="write">
-					<input type="text" placeholder="Scrivi un messaggio">
+					<input id='input-mes' type="text" placeholder="Scrivi un messaggio">
 				</div>
 				<div class="mic">
 					<a href="#"><i class="fas fa-microphone"></i></a>
