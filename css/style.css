@@ -323,11 +323,13 @@ section.column-right {
 
 
 .send {
+
 	align-self: flex-end;
 	background-color: rgb(193, 247, 193);
 }
 
 .received {
+
 	align-self: flex-start;
 	background-color: white;
 }
@@ -335,6 +337,8 @@ section.column-right {
 .bubble {
 	min-width: 20%;
 	max-width: 45%;
+	height: auto;
+	margin: 10px 0;
 	padding: 10px;
 	border-radius: 10px;
 	box-shadow: 0px 9px 5px -3px rgba(0, 0, 0, 0.527);
@@ -398,7 +402,7 @@ section.column-right {
 
 /* template section for JS */
 
-#template {
+.template {
 	display: none;
 }
 
