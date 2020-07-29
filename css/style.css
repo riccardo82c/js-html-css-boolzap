@@ -344,6 +344,7 @@ section.column-right {
 }
 
 .bubble .bubble-time {
+	font-size: 12px;
 	text-align: right;
 }
 
@@ -395,7 +396,6 @@ section.column-right {
 }
 
 .write-input .fly-message {
-
 	display: none;
 	padding: 8px 10px;
 }
