@@ -312,7 +312,7 @@ section.column-right {
 
 
 .chat {
-	overflow-y: scroll;
+	overflow-y: auto;
 	height: calc(100% - 50px);
 	padding: 20px 20px 0 20px;
 	display: flex;
@@ -337,7 +337,6 @@ section.column-right {
 .bubble {
 	min-width: 20%;
 	max-width: 45%;
-	height: auto;
 	margin: 10px 0;
 	padding: 10px;
 	border-radius: 10px;
@@ -386,6 +385,7 @@ section.column-right {
 	border-radius: 10px;
 }
 
+
 .write-input .mic {
 	flex: 0 1 auto;
 	display: flex;
@@ -393,6 +393,17 @@ section.column-right {
 	align-items: center;
 	padding: 0 10px;
 }
+
+.write-input .fly-message {
+
+	display: none;
+	padding: 8px 10px;
+}
+
+/*  */
+
+
+/*  */
 
 /* end colonna-dx scrivi messaggio */
 
