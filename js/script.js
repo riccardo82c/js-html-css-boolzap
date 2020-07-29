@@ -95,8 +95,14 @@ $(function () {
 			elemento.find('.bubble-time').append(ora);
 			// lo appendo nel DOM
 			$('.chat').append(elemento);
+
+			// al termine del messaggiori di ritorno faccio lo scroll down
 			$('.chat').scrollTop(2000);
-			/* template.append(testo); */
+
+
+
+
+
 
 		}
 	}

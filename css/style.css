@@ -62,9 +62,9 @@ input:focus {
 	color: #c1f7c1;
 }
 
-.active {
-	background-color: #6d869283
-}
+/* .active {
+	background-color: #6d869283;
+} */
 
 .contatto-time,
 .bubble-time {
@@ -280,7 +280,11 @@ section.column-left {
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid rgb(231, 229, 229);
+}
 
+
+.contatti:hover {
+	background-color: #c6d6dfc9;
 }
 
 .contatti img {
@@ -399,11 +403,6 @@ section.column-right {
 	display: none;
 	padding: 8px 10px;
 }
-
-/*  */
-
-
-/*  */
 
 /* end colonna-dx scrivi messaggio */
 
