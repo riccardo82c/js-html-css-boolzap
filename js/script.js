@@ -1,16 +1,13 @@
 $(function () {
 
 	/* inserisco data in alto in ultimo accesso */
-	var data = new Date();
-	var ora = addZero(data.getHours()) + ":" + addZero(data.getMinutes());
-	$('.ultimo-accesso-time').append(ora);
 
-	/* prova inserimento audio */
+	$('.ultimo-accesso-time').append(currentTime());
+
+	/* inserimento audio invio ricezione messaggio*/
 
 	const sendMessAudio = new Audio("sounds/Button-click-sound.mp3");
 	const receiveMessAudio = new Audio("sounds/Pop-sound-effect.mp3");
-
-
 
 
 	/* array delle risposte fake */
@@ -48,7 +45,9 @@ $(function () {
 	/* richiamo funzione selezione contatto (set active class) */
 	$('.contatti').on('click', selectContact);
 
-	/* Funzioni */
+
+
+	/* FUNCTION SECTION */
 
 	/* funzione selezione contatto -> .active */
 	function selectContact() {
@@ -74,18 +73,18 @@ $(function () {
 	}
 
 	// add zero all'ora corrente
-	function addZero(i) {
-		if (i < 10) {
-			i = "0" + i;
-		}
-		return i;
-	}
+	function currentTime() {
 
-	// scroll della chat all'invio / ricezione mess
-	function scrollChat() {
-		$('.chat').animate({
-			scrollTop: $('.chat')[0].scrollHeight
-		});
+		function addZero(i) {
+			if (i < 10) {
+				i = "0" + i;
+			}
+			return i;
+		}
+		var data = new Date();
+		var ora = addZero(data.getHours()) + ":" + addZero(data.getMinutes());
+		return ora;
+
 	}
 
 	/* funzione inserimento caratteri al press di tasti nell'input */
@@ -95,12 +94,19 @@ $(function () {
 		}
 	}
 
+
+	// funzione scroll della chat
+	function scrollChat() {
+		$('.chat.active').animate({
+			scrollTop: $('.chat.active')[0].scrollHeight
+		});
+	}
+
 	// funzione invio e ricezione messaggi
 	function chatting() {
 
 		var testo = $('#input-mes').val();
-		var data = new Date();
-		var ora = addZero(data.getHours()) + ":" + addZero(data.getMinutes());
+
 		if (testo != '') {
 			sendMessAudio.play()
 			console.log(testo);
@@ -110,10 +116,9 @@ $(function () {
 			// modifico l'elemento NUOVO in memoria
 			elemento.addClass('send');
 			elemento.find('.bubble-text').append(testo);
-			elemento.find('.bubble-time').append(ora);
+			elemento.find('.bubble-time').append(currentTime());
 			// lo appendo nel DOM
 			$('.chat.active').append(elemento);
-			// scroll pagina
 			scrollChat();
 
 
@@ -125,8 +130,7 @@ $(function () {
 
 				var indice = numRandom(1, risposte.length - 1);
 				var testo = risposte[indice];
-				var data = new Date();
-				var ora = addZero(data.getHours()) + ":" + addZero(data.getMinutes());
+
 
 				// clono tutto l'elemento bubble ALL'INTERNO DI TEMPLATE
 				var elemento = $('.template .bubble').clone();
@@ -138,16 +142,16 @@ $(function () {
 				// testo tagliato
 
 				$('.contatti.active').find($('.lastSend')).text(testo.substring(0, 20) + '...');
-				$('.contatti.active').find($('.contatto-time')).text(ora);
+				$('.contatti.active').find($('.contatto-time')).text(currentTime());
 
-				elemento.find('.bubble-time').append(ora);
+				elemento.find('.bubble-time').append(currentTime());
 				// lo appendo nel DOM
 				$('.chat.active').append(elemento);
 
 				receiveMessAudio.play();
 
 				// al termine del messaggiori di ritorno faccio lo scroll down
-				scrollChat()
+				scrollChat();
 
 
 			}
