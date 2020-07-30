@@ -285,6 +285,11 @@ section.column-left {
 
 .contatti:hover {
 	background-color: #c6d6dfc9;
+	cursor: pointer;
+}
+
+.contatti.active {
+	background-color: #c6d6dfc9;
 }
 
 .contatti img {
@@ -319,10 +324,15 @@ section.column-right {
 	overflow-y: auto;
 	height: calc(100% - 50px);
 	padding: 20px 20px 0 20px;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_9e8a2898faedb7db9bf5638405cf81ae.png');
 	background-color: rgba(0, 0, 0, 0.425);
+}
+
+/* chat active visibile */
+.chat.active {
+	display: flex;
 }
 
 
@@ -335,7 +345,7 @@ section.column-right {
 .received {
 
 	align-self: flex-start;
-	background-color: white;
+	background-color: #d1e3eb;
 }
 
 .bubble {
@@ -345,6 +355,10 @@ section.column-right {
 	padding: 10px;
 	border-radius: 10px;
 	box-shadow: 0px 9px 5px -3px rgba(0, 0, 0, 0.527);
+}
+
+.bubble .bubble-text {
+	word-wrap: break-word;
 }
 
 .bubble .bubble-time {
@@ -389,6 +403,10 @@ section.column-right {
 	padding: 5px 5px;
 	border-radius: 10px;
 }
+
+
+
+
 
 
 .write-input .mic {

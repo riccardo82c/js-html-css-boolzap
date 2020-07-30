@@ -1,5 +1,13 @@
 $(function () {
 
+	/* prova inserimento audio */
+
+	const sendMessAudio = new Audio("sounds/Button-click-sound.mp3");
+	const receiveMessAudio = new Audio("sounds/Pop-sound-effect.mp3");
+
+
+
+
 	/* array delle risposte fake */
 	var risposte = [
 		'Tutto bene, tu?',
@@ -10,8 +18,14 @@ $(function () {
 		'Mi piace sentire la tua voce.',
 		'Chi non muore si rivede è?',
 		'Certamente!',
-		'Domani hanno detto che farà brutto tempo.'
-	]
+		'Domani hanno detto che farà brutto tempo.',
+		'Forse mi confondi con qualcun\'altro',
+		'Sono in riunione',
+		'Ciao, come stai?',
+		'Come stanno i tuoi?',
+		'Dove ci troviamo?',
+		'Mi sembra un\'ottima idea'
+	];
 
 	/* resetto il campo input al loading della pagina */
 	$('#input-mes').val('');
@@ -26,12 +40,24 @@ $(function () {
 	/* richiamo funzione inserimento caratteri al press del tasto fly mess */
 	$('#input-mes-btn').on('click', chatting);
 
-
-
-
-
+	/* richiamo funzione selezione contatto (set active class) */
+	$('.contatti').on('click', selectContact);
 
 	/* Funzioni */
+
+	/* funzione selezione contatto -> .active */
+	function selectContact() {
+
+		// rimuovo classe .active da tutti i contatti e da tutte le chat
+		$('.contatti').removeClass('active');
+		$('.chat').removeClass('active');
+		// aggiungo classe .active a QUESTO elemento li
+		$(this).addClass('active');
+		// trovo l'indice el corrente
+		var indice = $(this).index();
+		// setto active alla chat con lo stesso indice dell'elemento li
+		$('.chat').eq(indice).addClass('active');
+	}
 
 	// funzione per cambiare icona a lato input chat
 	function changeMicToMess() {
@@ -59,55 +85,62 @@ $(function () {
 
 	// funzione invio e ricezione messaggi
 	function chatting() {
-
+		sendMessAudio.play()
 		var testo = $('#input-mes').val();
 		var data = new Date();
 		var ora = addZero(data.getHours()) + ":" + addZero(data.getMinutes());
 		if (testo != '') {
 			console.log(testo);
 			$('#input-mes').val('')
-			// clono tutto l'elemento bubble
+			// clono tutto l'elemento bubble ALL'INTERNO DI TEMPLATE
 			var elemento = $('.template .bubble').clone();
 			// modifico l'elemento NUOVO in memoria
 			elemento.addClass('send');
 			elemento.find('.bubble-text').append(testo);
 			elemento.find('.bubble-time').append(ora);
 			// lo appendo nel DOM
-			$('.chat').append(elemento);
-			$('.chat').scrollTop(2000);
-			/* template.append(testo); */
+			$('.chat.active').append(elemento);
+			$('.chat.active').scrollTop(2000);
+
+
+
+
+			setTimeout(receiveMess, (numRandom(1, 5) * 1000), 'received');
+
+			function receiveMess(str) {
+
+				var indice = numRandom(1, risposte.length - 1);
+				var testo = risposte[indice];
+				var data = new Date();
+				var ora = data.getHours() + ":" + data.getMinutes();
+
+				// clono tutto l'elemento bubble ALL'INTERNO DI TEMPLATE
+				var elemento = $('.template .bubble').clone();
+				// modifico l'elemento NUOVO in memoria
+				elemento.addClass(str);
+				elemento.find('.bubble-text').append(testo);
+
+				// inserisco il testo anche nell contatto di sx
+				$('.contatti.active').find($('.lastSend')).text(testo);
+				$('.contatti.active').find($('.contatto-time')).text(ora);
+
+				elemento.find('.bubble-time').append(ora);
+				// lo appendo nel DOM
+				$('.chat.active').append(elemento);
+
+				receiveMessAudio.play();
+
+				// al termine del messaggiori di ritorno faccio lo scroll down
+				$('.chat.active').scrollTop(2000);
+
+
+			}
+
+		} else {
+			console.log('stringa vuota');
 		}
 
-		setTimeout(receiveMess, 3000);
-
-		function receiveMess() {
-
-			var indice = numRandom(1, risposte.length - 1);
-			var testo = risposte[indice];
-			var data = new Date();
-			var ora = data.getHours() + ":" + data.getMinutes();
-
-			// clono tutto l'elemento bubble
-			var elemento = $('.template .bubble').clone();
-			// modifico l'elemento NUOVO in memoria
-			elemento.addClass('received');
-			elemento.find('.bubble-text').append(testo);
-			elemento.find('.bubble-time').append(ora);
-			// lo appendo nel DOM
-			$('.chat').append(elemento);
-
-			// al termine del messaggiori di ritorno faccio lo scroll down
-			$('.chat').scrollTop(2000);
-
-
-
-
-
-
-		}
 	}
-
-
 
 });
 
