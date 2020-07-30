@@ -1,5 +1,10 @@
 $(function () {
 
+	/* inserisco data in alto in ultimo accesso */
+	var data = new Date();
+	var ora = addZero(data.getHours()) + ":" + addZero(data.getMinutes());
+	$('.ultimo-accesso-time').append(ora);
+
 	/* prova inserimento audio */
 
 	const sendMessAudio = new Audio("sounds/Button-click-sound.mp3");
@@ -34,10 +39,10 @@ $(function () {
 	$('#input-mes').focus(changeMicToMess);
 	$('#input-mes').focusout(changeMicToMess);
 
-	/* richiamo funzione inserimento caratteri al press di tasti nell'input */
+	/* richiamo funzione inserimento caratteri al press di tasti da tastiera */
 	$('#input-mes').keydown(chatKeyboard);
 
-	/* richiamo funzione inserimento caratteri al press del tasto fly mess */
+	/* richiamo funzione inserimento caratteri al press del bottone fly mess */
 	$('#input-mes-btn').on('click', chatting);
 
 	/* richiamo funzione selezione contatto (set active class) */
@@ -61,7 +66,7 @@ $(function () {
 
 	// funzione per cambiare icona a lato input chat
 	function changeMicToMess() {
-		$('.fly-message,.mic').toggle(400);
+		$('.fly-message,.mic').toggle(300);
 	}
 	// numero random
 	function numRandom(min, max) {
@@ -76,6 +81,13 @@ $(function () {
 		return i;
 	}
 
+	// scroll della chat all'invio / ricezione mess
+	function scrollChat() {
+		$('.chat').animate({
+			scrollTop: $('.chat')[0].scrollHeight
+		});
+	}
+
 	/* funzione inserimento caratteri al press di tasti nell'input */
 	function chatKeyboard(e) {
 		if (e.which == 13 || e.keyCode == 13) {
@@ -85,11 +97,12 @@ $(function () {
 
 	// funzione invio e ricezione messaggi
 	function chatting() {
-		sendMessAudio.play()
+
 		var testo = $('#input-mes').val();
 		var data = new Date();
 		var ora = addZero(data.getHours()) + ":" + addZero(data.getMinutes());
 		if (testo != '') {
+			sendMessAudio.play()
 			console.log(testo);
 			$('#input-mes').val('')
 			// clono tutto l'elemento bubble ALL'INTERNO DI TEMPLATE
@@ -100,7 +113,8 @@ $(function () {
 			elemento.find('.bubble-time').append(ora);
 			// lo appendo nel DOM
 			$('.chat.active').append(elemento);
-			$('.chat.active').scrollTop(2000);
+			// scroll pagina
+			scrollChat();
 
 
 
@@ -112,7 +126,7 @@ $(function () {
 				var indice = numRandom(1, risposte.length - 1);
 				var testo = risposte[indice];
 				var data = new Date();
-				var ora = data.getHours() + ":" + data.getMinutes();
+				var ora = addZero(data.getHours()) + ":" + addZero(data.getMinutes());
 
 				// clono tutto l'elemento bubble ALL'INTERNO DI TEMPLATE
 				var elemento = $('.template .bubble').clone();
@@ -121,7 +135,9 @@ $(function () {
 				elemento.find('.bubble-text').append(testo);
 
 				// inserisco il testo anche nell contatto di sx
-				$('.contatti.active').find($('.lastSend')).text(testo);
+				// testo tagliato
+
+				$('.contatti.active').find($('.lastSend')).text(testo.substring(0, 20) + '...');
 				$('.contatti.active').find($('.contatto-time')).text(ora);
 
 				elemento.find('.bubble-time').append(ora);
@@ -131,7 +147,7 @@ $(function () {
 				receiveMessAudio.play();
 
 				// al termine del messaggiori di ritorno faccio lo scroll down
-				$('.chat.active').scrollTop(2000);
+				scrollChat()
 
 
 			}

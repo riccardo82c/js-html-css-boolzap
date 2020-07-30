@@ -20,6 +20,17 @@
 
 /* typo */
 
+/* background di ogni sezione */
+header,
+.aside-top,
+.aside-center,
+.aside-bottom,
+.write-input {
+	background-color: #f3fdff;
+}
+
+/*  */
+
 i {
 	font-size: 24px;
 
@@ -62,9 +73,7 @@ input:focus {
 	color: #c1f7c1;
 }
 
-/* .active {
-	background-color: #6d869283;
-} */
+
 
 .contatto-time,
 .bubble-time {
@@ -102,7 +111,7 @@ body {
 	height: 90vh;
 	width: 1200px;
 	margin: 5vh auto;
-	background-color: white;
+
 	box-shadow: 1px 9px 5px -3px rgb(113, 118, 132);
 	border: 1px solid #6d8692;
 }
@@ -214,7 +223,7 @@ section.column-left {
 	height: 40px;
 	width: 40px;
 	border-radius: 50%;
-	background-color: white;
+	background-color: #f3fdff;
 
 	display: flex;
 	align-items: center;
@@ -234,7 +243,7 @@ section.column-left {
 	display: flex;
 	align-items: center;
 	font-size: 24px;
-	background-color: white;
+
 
 
 	/* shadow effect */
@@ -301,6 +310,11 @@ section.column-left {
 	padding: 10px;
 }
 
+.contatto .lastSend {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .contatto-time {
 	align-self: flex-start
 }
@@ -327,7 +341,7 @@ section.column-right {
 	display: none;
 	flex-direction: column;
 	background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_9e8a2898faedb7db9bf5638405cf81ae.png');
-	background-color: rgba(0, 0, 0, 0.425);
+	background-color: rgb(92, 131, 150);
 }
 
 /* chat active visibile */
@@ -339,13 +353,15 @@ section.column-right {
 .send {
 
 	align-self: flex-end;
-	background-color: rgb(193, 247, 193);
+	background: linear-gradient(325deg, rgba(203, 246, 199, 1) 0%, rgba(159, 245, 193, 1) 100%);
+	/* background-color: rgb(193, 247, 193); */
 }
 
 .received {
 
 	align-self: flex-start;
-	background-color: #d1e3eb;
+	background: linear-gradient(325deg, rgb(177, 216, 232) 0%, rgb(158, 232, 240) 100%);
+	/* background-color: #d1e3eb; */
 }
 
 .bubble {
@@ -353,7 +369,7 @@ section.column-right {
 	max-width: 45%;
 	margin: 10px 0;
 	padding: 10px;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-shadow: 0px 9px 5px -3px rgba(0, 0, 0, 0.527);
 }
 
@@ -375,7 +391,7 @@ section.column-right {
 	font-size: 24px;
 	display: flex;
 	justify-content: space-around;
-	background-color: white;
+
 
 
 	/* shadow effect */
