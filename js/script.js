@@ -1,8 +1,17 @@
 $(function () {
 
+	/* To Do: */
+	/* 1. settare al click del mouse nei contatti di sx il cambio dell'icona ultimo accesso, del nome e dell'ora ultimo accesso (header).
+	Sostituire icona in alto a sx con la mia del pirata */
+
+	/* 2. Inserire possibilità di effettuare search per filtrare i risultati
+	dei contatti  */
+
+	/*  */
+
 	/* inserisco data in alto in ultimo accesso */
 
-	$('.ultimo-accesso-time').append(currentTime());
+
 
 	/* inserimento audio invio ricezione messaggio*/
 
@@ -40,7 +49,7 @@ $(function () {
 	$('#input-mes').keydown(chatKeyboard);
 
 	/* richiamo funzione inserimento caratteri al press del bottone fly mess */
-	$('#input-mes-btn').on('click', chatting);
+	$('#input-mes-btn').on('click', sendMess);
 
 	/* richiamo funzione selezione contatto (set active class) */
 	$('.contatti').on('click', selectContact);
@@ -57,6 +66,19 @@ $(function () {
 		$('.chat').removeClass('active');
 		// aggiungo classe .active a QUESTO elemento li
 		$(this).addClass('active');
+
+		// trovo nome e ora di accesso del contatto corrente
+		let lastAccesName = $('.contatti.active .contatto-name').text();
+		console.log(lastAccesName);
+		let lastAccesTime = $('.contatti.active .contatto-time').text();
+		let lastAccesAvatar = $('.contatti.active .contatto-avatar').attr('src');
+		console.log(lastAccesAvatar);
+		// e la sposto in alto come ultimo accesso
+		$('.ultimo-accesso-text').text(lastAccesName);
+		$('.ultimo-accesso-time').text(lastAccesTime);
+		$('.ultimo-accesso-avatar').attr('src', lastAccesAvatar);
+
+
 		// trovo l'indice el corrente
 		var indice = $(this).index();
 		// setto active alla chat con lo stesso indice dell'elemento li
@@ -90,7 +112,7 @@ $(function () {
 	/* funzione inserimento caratteri al press di tasti nell'input */
 	function chatKeyboard(e) {
 		if (e.which == 13 || e.keyCode == 13) {
-			chatting();
+			sendMess();
 		}
 	}
 
@@ -102,8 +124,8 @@ $(function () {
 		});
 	}
 
-	// funzione invio e ricezione messaggi
-	function chatting() {
+	// funzione invio  messaggi (che al suo interno richiama ricezione messaggi)
+	function sendMess() {
 
 		var testo = $('#input-mes').val();
 
@@ -122,43 +144,50 @@ $(function () {
 			scrollChat();
 
 
+			// dopo un tot di tempo avvio la funzione ricezione messaggi
+			setTimeout(receiveMess, (numRandom(1, 3) * 1000), 'received');
 
 
-			setTimeout(receiveMess, (numRandom(1, 5) * 1000), 'received');
-
-			function receiveMess(str) {
-
-				var indice = numRandom(1, risposte.length - 1);
-				var testo = risposte[indice];
-
-
-				// clono tutto l'elemento bubble ALL'INTERNO DI TEMPLATE
-				var elemento = $('.template .bubble').clone();
-				// modifico l'elemento NUOVO in memoria
-				elemento.addClass(str);
-				elemento.find('.bubble-text').append(testo);
-
-				// inserisco il testo anche nell contatto di sx
-				// testo tagliato
-
-				$('.contatti.active').find($('.lastSend')).text(testo.substring(0, 20) + '...');
-				$('.contatti.active').find($('.contatto-time')).text(currentTime());
-
-				elemento.find('.bubble-time').append(currentTime());
-				// lo appendo nel DOM
-				$('.chat.active').append(elemento);
-
-				receiveMessAudio.play();
-
-				// al termine del messaggiori di ritorno faccio lo scroll down
-				scrollChat();
-
-
-			}
 
 		} else {
 			console.log('stringa vuota');
 		}
+
+	}
+
+	// funzione ricezione messaggi (richiamata da invio messaggi)
+
+	function receiveMess(str) {
+
+		var indice = numRandom(1, risposte.length - 1);
+		var testo = risposte[indice];
+
+
+		// clono tutto l'elemento bubble ALL'INTERNO DI TEMPLATE
+		var elemento = $('.template .bubble').clone();
+		// modifico l'elemento NUOVO in memoria
+		elemento.addClass(str);
+		elemento.find('.bubble-text').append(testo);
+
+		// inserisco il testo anche nell contatto di sx
+		// testo tagliato
+
+		$('.contatti.active').find($('.lastSend')).text(testo.substring(0, 20) + '...');
+		$('.contatti.active').find($('.contatto-time')).text(currentTime());
+
+		// 
+
+
+
+		elemento.find('.bubble-time').append(currentTime());
+		// lo appendo nel DOM
+		$('.chat.active').append(elemento);
+
+		receiveMessAudio.play();
+
+		// al termine del messaggiori di ritorno faccio lo scroll down
+		scrollChat();
+
 
 	}
 
