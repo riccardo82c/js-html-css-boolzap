@@ -7,14 +7,11 @@ $(function () {
 	/* DONE Inserire possibilità di effettuare search per filtrare i risultati
 	dei contatti  */
 
-	/*  */
 
-	/* inserisco data in alto in ultimo accesso */
 
 
 
 	/* inserimento audio invio ricezione messaggio*/
-
 	const sendMessAudio = new Audio("sounds/Button-click-sound.mp3");
 	const receiveMessAudio = new Audio("sounds/Pop-sound-effect.mp3");
 
@@ -41,6 +38,8 @@ $(function () {
 	/* resetto il campo input al loading della pagina */
 	$('#input-mes').val('');
 
+
+
 	/* richiamo funzione per cambiare icona lato destro messaggio inserito al focus dello stesso*/
 	$('#input-mes').focus(changeMicToMess);
 	$('#input-mes').focusout(changeMicToMess);
@@ -64,22 +63,25 @@ $(function () {
 	/* funzione ricerca contatto */
 
 	function searchContact() {
-		let filterValue = $('#search').val().toUpperCase();
-		console.log('lettera inserita', filterValue);
+		let filterValue = $('#search').val().toLowerCase();
 		let contatto = $('ul li.contatti');
-
-
 		for (let i = 0; i < contatto.length; i++) {
 			let item = contatto.eq(i).find('.contatto-name').text();
+			if (item.toLowerCase().includes(filterValue)) {
 
-
-			if (item.toUpperCase().includes(filterValue)) {
-				console.log('indice lettera presente', item.toUpperCase().indexOf(filterValue));
 				contatto.eq(i).show();
 			} else {
-				console.log('indice lettera mancante', item.toUpperCase().indexOf(filterValue));
+
 				contatto.eq(i).hide();
 			}
+		}
+
+		if ($('.contatti:visible').length == 0) {
+			console.log('non ci sono contatti');
+			$('#no-contact').show();
+			$('#no-ins').text($('#search').val());
+		} else {
+			$('#no-contact').hide();
 		}
 	}
 
@@ -95,10 +97,10 @@ $(function () {
 
 		// trovo nome e ora di accesso del contatto corrente
 		let lastAccesName = $('.contatti.active .contatto-name').text();
-		console.log(lastAccesName);
+
 		let lastAccesTime = $('.contatti.active .contatto-time').text();
 		let lastAccesAvatar = $('.contatti.active .contatto-avatar').attr('src');
-		console.log(lastAccesAvatar);
+
 		// e la sposto in alto come ultimo accesso
 		$('.ultimo-accesso-text').text(lastAccesName);
 		$('.ultimo-accesso-time').text(lastAccesTime);
@@ -157,7 +159,7 @@ $(function () {
 
 		if (testo != '') {
 			sendMessAudio.play()
-			console.log(testo);
+
 			$('#input-mes').val('')
 			// clono tutto l'elemento bubble ALL'INTERNO DI TEMPLATE
 			var elemento = $('.template .bubble').clone();
@@ -166,17 +168,13 @@ $(function () {
 			elemento.find('.bubble-text').append(testo);
 			elemento.find('.bubble-time').append(currentTime());
 			// lo appendo nel DOM
+
 			$('.chat.active').append(elemento);
 			scrollChat();
 
 
 			// dopo un tot di tempo avvio la funzione ricezione messaggi
 			setTimeout(receiveMess, (numRandom(1, 3) * 1000), 'received');
-
-
-
-		} else {
-			console.log('stringa vuota');
 		}
 
 	}
@@ -201,6 +199,9 @@ $(function () {
 		$('.contatti.active').find($('.lastSend')).text(testo.substring(0, 20) + '...');
 		$('.contatti.active').find($('.contatto-time')).text(currentTime());
 
+		/*Vado a cambiare anche l'ora nella sezione alta ultimo accesso del contatto corrente, senza questa istruzione il cambio ora avviene solo al cambio del contatto selezionato */
+		$('.ultimo-accesso-time').text(currentTime());
+
 		// 
 
 
@@ -211,7 +212,7 @@ $(function () {
 
 		receiveMessAudio.play();
 
-		// al termine del messaggiori di ritorno faccio lo scroll down
+		// al termine del messaggio di ritorno faccio lo scroll down
 		scrollChat();
 
 
