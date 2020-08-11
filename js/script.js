@@ -76,6 +76,7 @@ $(function () {
 			}
 		}
 
+		/* se non ci sono contatti visualizzo messaggio */
 		if ($('.contatti:visible').length == 0) {
 			console.log('non ci sono contatti');
 			$('#no-contact').show();

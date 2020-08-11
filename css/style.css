@@ -403,6 +403,7 @@ section.column-right {
 	font-size: 24px;
 	display: flex;
 	justify-content: space-around;
+	border-left: 1px solid rgb(231, 229, 229);
 
 
 
