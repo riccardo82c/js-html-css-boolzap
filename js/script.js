@@ -1,10 +1,10 @@
 $(function () {
 
 	/* To Do: */
-	/* 1. settare al click del mouse nei contatti di sx il cambio dell'icona ultimo accesso, del nome e dell'ora ultimo accesso (header).
+	/* DONE settare al click del mouse nei contatti di sx il cambio dell'icona ultimo accesso, del nome e dell'ora ultimo accesso (header).
 	Sostituire icona in alto a sx con la mia del pirata */
 
-	/* 2. Inserire possibilità di effettuare search per filtrare i risultati
+	/* DONE Inserire possibilità di effettuare search per filtrare i risultati
 	dei contatti  */
 
 	/*  */
@@ -41,7 +41,7 @@ $(function () {
 	/* resetto il campo input al loading della pagina */
 	$('#input-mes').val('');
 
-	/* richiamo funzione per cambiare icona lato destro input al focus */
+	/* richiamo funzione per cambiare icona lato destro messaggio inserito al focus dello stesso*/
 	$('#input-mes').focus(changeMicToMess);
 	$('#input-mes').focusout(changeMicToMess);
 
@@ -54,9 +54,35 @@ $(function () {
 	/* richiamo funzione selezione contatto (set active class) */
 	$('.contatti').on('click', selectContact);
 
+	/* funzione search contatti */
+	$('#search').keyup(searchContact);
+
 
 
 	/* FUNCTION SECTION */
+
+	/* funzione ricerca contatto */
+
+	function searchContact() {
+		let filterValue = $('#search').val().toUpperCase();
+		console.log('lettera inserita', filterValue);
+		let contatto = $('ul li.contatti');
+
+
+		for (let i = 0; i < contatto.length; i++) {
+			let item = contatto.eq(i).find('.contatto-name').text();
+
+
+			if (item.toUpperCase().includes(filterValue)) {
+				console.log('indice lettera presente', item.toUpperCase().indexOf(filterValue));
+				contatto.eq(i).show();
+			} else {
+				console.log('indice lettera mancante', item.toUpperCase().indexOf(filterValue));
+				contatto.eq(i).hide();
+			}
+		}
+	}
+
 
 	/* funzione selezione contatto -> .active */
 	function selectContact() {
